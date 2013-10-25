@@ -82,7 +82,10 @@ abstract class ControllerPaymentPaymill extends Controller implements Services_P
         }
 
         $this->data['paymill_activepayment'] = $this->getPaymentName();
-        $this->template = 'default/template/payment/paymill.tpl';
+				$this->template = 'default/template/payment/paymill.tpl';
+				if(file_exists(DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/paymill.tpl')){
+					$this->template = DIR_TEMPLATE . $this->config->get('config_template') . '/template/payment/paymill.tpl';
+				}
 
         $this->render();
     }
